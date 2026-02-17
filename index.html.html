@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Areesha!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Georgia', serif; overflow: hidden;
+            background: linear-gradient(135deg, #780206 0%, #061161 100%); 
+        }
+
+        #effect-container { position: fixed; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .heart { position: absolute; color: #ffffff; animation: floatUp 6s linear infinite; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); }
+        .balloon { position: absolute; font-size: 50px; bottom: -100px; animation: bobble 12s ease-in-out infinite; opacity: 0.8; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.9; }
+            100% { transform: translateY(-10vh) scale(1.6); opacity: 0; }
+        }
+        @keyframes bobble {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-130vh) translateX(-30px); }
+        }
+
+        .slide { display: none; height: 100vh; width: 100vw; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; box-sizing: border-box; position: relative; z-index: 10; }
+        .active { display: flex; }
+
+        h1 { color: #ffffff; text-shadow: 2px 4px 10px rgba(0,0,0,0.5); font-size: 3rem; font-family: 'Dancing Script', cursive; margin-bottom: 15px; }
+        
+        button {
+            padding: 15px 35px; font-size: 1.1rem; background-color: #ffffff; color: #800000;
+            border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: 0.3s; font-weight: bold; text-transform: uppercase;
+        }
+        button:hover { transform: scale(1.1); background-color: #ffebeb; }
+
+        /* VOUCHER */
+        .voucher-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(252, 246, 186, 0.4);
+            border-radius: 20px;
+            width: 580px; min-height: 260px;
+            display: flex; box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            overflow: hidden; color: white;
+        }
+        .voucher-left { flex: 3; padding: 35px; display: flex; flex-direction: column; justify-content: center; border-right: 2px dashed rgba(255, 255, 255, 0.3); text-align: left; }
+        .voucher-right { flex: 1; background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728); display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; color: #3e2723; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: 6px; }
+        .voucher-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.8rem; color: #fcf6ba; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .voucher-msg { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-top: 15px; line-height: 1.4; color: #ffffff; font-style: normal; font-weight: 700; }
+
+        /* PHOTO LAYOUT */
+        .photo-layout {
+            display: flex; align-items: center; justify-content: center; gap: 20px;
+            background: rgba(255, 255, 255, 0.05); padding: 30px;
+            border: 4px solid #bf953f; border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.6); max-width: 95%;
+        }
+        .side-stack { display: flex; flex-direction: column; gap: 15px; }
+        .main-img { width: 400px; height: 520px; object-fit: cover; border: 10px solid white; border-radius: 5px; transform: rotate(1deg); }
+        .side-img { width: 160px; height: 220px; object-fit: cover; border: 6px solid white; border-radius: 3px; }
+
+        /* LETTER BOX */
+        .letter-box { background: rgba(255,255,255,0.98); padding: 40px; border-radius: 15px; max-width: 550px; text-align: left; line-height: 1.6; color: #222; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+        /* CAKE */
+        .cake-container { margin-top: 40px; cursor: pointer; }
+        .cake { position: relative; width: 180px; height: 100px; background: #f4e1d2; border-radius: 10px 10px 0 0; border-bottom: 10px solid #ff4d6d; }
+        .candle { position: absolute; width: 10px; height: 40px; background: #60b9ff; top: -40px; left: 85px; border-radius: 4px; }
+        .flame { position: absolute; width: 16px; height: 26px; background: #ffca28; border-radius: 50% 50% 20% 20%; top: -70px; left: 82px; animation: flicker 0.6s infinite alternate; }
+
+        .bottom-right { position: absolute; right: 40px; bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <div id="effect-container"></div>
+
+    <div class="slide active" id="slide1">
+        <h1>Happy Birthday, Areesha My Love 💗</h1>
+        <button onclick="nextSlide(2)">Gonna Celebrate Together!!</button>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h1>Our Best Days</h1>
+        <div class="photo-layout">
+            <div class="side-stack">
+                <img src="Image1.jpg" alt="Photo 1" class="side-img" style="transform: rotate(-3deg);">
+                <img src="Image2.jpg" alt="Photo 2" class="side-img" style="transform: rotate(2deg);">
+            </div>
+            <img src="Image5.jpg" alt="Main Photo" class="main-img">
+            <div class="side-stack">
+                <img src="Image3.jpg" alt="Photo 3" class="side-img" style="transform: rotate(-2deg);">
+                <img src="Image4.jpg" alt="Photo 4" class="side-img" style="transform: rotate(3deg);">
+            </div>
+        </div>
+        <button class="bottom-right" onclick="nextSlide(3)">THERES MORE TO GO BABEEE</button>
+    </div>
+
+    <div class="slide" id="slide3">
+        <div class="voucher-container">
+            <div class="voucher-left">
+                <p style="text-transform: uppercase; font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; color: #fcf6ba; margin-bottom: 8px;">Special Invitation</p>
+                <h2 class="voucher-title">Date Voucher</h2>
+                <p class="voucher-msg">
+                    Pick a place, and we can go there together. on a date. hehe i love you my dear baby.
+                </p>
+                <p style="margin-top: 25px; font-size: 0.8rem; opacity: 0.6; font-weight: 300;">Ticket #LOVE-2026 • Valid Forever</p>
+            </div>
+            <div class="voucher-right">
+                AREESHA
+            </div>
+        </div>
+        <br><br>
+        <button onclick="nextSlide(4)">Just One More, Darling.</button>
+    </div>
+
+    <div class="slide" id="slide4">
+        <div class="letter-box">
+            <h2 style="color:#800000; font-family: 'Dancing Script'; font-size: 2.2rem; margin-top:0;">My Dearest Areesha,</h2>
+            <p style="font-weight: 600;">
+                HAPPY BIRTHDAY!!!<br><br>
+                Hope u have a great dayyy todayyy, it is totally worth it to spend each time together in college with ya. ur my favourite person after all hehe, and like everyday is so much fun with ya. <br><br>
+                Honestly, the person who is the reason i am always so happy and like find college so good. keep enjoying ur short-sighted life and mastikhor rehna cuz i love that.<br><br>
+                goodluck on ur next yearsss, will be a part of em all ofc, and try make em happy too. dont change much cuz i REALLY LOVE the current u. I love you my baby.
+            </p>
+        </div>
+        <br>
+        <button onclick="nextSlide(5)">One last surprise...</button>
+    </div>
+
+    <div class="slide" id="slide5">
+        <h1>Make a Wish, Darling! 🎂</h1>
+        <div class="cake-container" onclick="blowCandle()">
+            <div class="cake">
+                <div class="candle"></div>
+                <div class="flame" id="flame"></div>
+            </div>
+        </div>
+        <div id="wishMsg" style="display:none; color: white; font-size: 2.2rem; margin-top: 30px; font-family: 'Dancing Script';">Happy Birthday, Areesha! ✨❤️</div>
+        <br>
+        <button id="restartBtn" style="display:none;" onclick="nextSlide(1)">Start Over? ❤️</button>
+    </div>
+
+    <script>
+        const container = document.getElementById('effect-container');
+        function createHeart() {
+            const h = document.createElement('div');
+            h.className = 'heart'; h.innerHTML = '❤️';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.fontSize = (Math.random() * 25 + 20) + 'px';
+            h.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            container.appendChild(h);
+            setTimeout(() => h.remove(), 6000);
+        }
+        function createBalloon() {
+            const b = document.createElement('div');
+            b.className = 'balloon'; b.innerHTML = '🎈';
+            b.style.left = Math.random() * 100 + 'vw';
+            b.style.animationDuration = (Math.random() * 5 + 7) + 's';
+            container.appendChild(b);
+            setTimeout(() => b.remove(), 12000);
+        }
+        setInterval(createHeart, 300);
+        setInterval(createBalloon, 1500);
+
+        function nextSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide' + n).classList.add('active');
+        }
+
+        function blowCandle() {
+            document.getElementById('flame').style.display = 'none';
+            document.getElementById('wishMsg').style.display = 'block';
+            document.getElementById('restartBtn').style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>
